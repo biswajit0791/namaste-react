@@ -2,24 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-
-/**
- * Header
- *  - Logo
- *  - Nav Items
- * Body
- *  - Search
- *  - Restaurant Container
- *      - Restaurant Card
- *          - Img
- *          - Name of Res, Rating, Cuisine, Delivery Time
- * Footer
- *  - Copyright
- *  - Links
- *  - Address
- *  - Contacts
- *
- */
+import About from "./components/About";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
 
 const AppLayout = () => (
   <div className="app">
@@ -28,5 +14,21 @@ const AppLayout = () => (
   </div>
 );
 
+const appRouter = createBrowserRouter([
+  {
+    path: '/',
+    element: <AppLayout />,
+    errorElement: <Error/>
+  },
+  {
+    path: '/about',
+    element: <About/>
+  },
+  {
+    path: '/contact',
+    element: <Contact/>
+  }
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);
