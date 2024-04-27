@@ -37,3 +37,7 @@
     flex-wrap: wrap;
     margin: 5px;
 }
+.filter-btn{
+    margin-bottom: 10px;
+    cursor: pointer;
+}
