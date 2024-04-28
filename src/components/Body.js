@@ -1,15 +1,17 @@
 import RestaurantCard, { withVegLabel } from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { SWIGGY_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/userContext";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
   const [filteredRestaurants, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const RestaurantCardVeg = withVegLabel(RestaurantCard);
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   useEffect(() => {
     fetchData();
@@ -41,7 +43,7 @@ const Body = () => {
       </h1>
     );
 
-  return filteredRestaurants.length === 0 ? (
+  return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -80,6 +82,17 @@ const Body = () => {
             }}>
             Reset
           </button>
+          <div className="search m-4 p-4">
+            <label>UserName: </label>
+            <input
+              type="text"
+              className="border border-solid border-black p-2"
+              value={loggedInUser}
+              onChange={(e) => {
+                setUserName(e.target.value);
+              }}
+            />
+          </div>
         </div>
       </div>
       <div className="flex flex-wrap rounded-lg">
