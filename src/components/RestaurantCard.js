@@ -1,8 +1,5 @@
 import { RES_IMG_URL } from "../utils/constants";
 
-const styleCard = {
-  backgroundColor: "#f0f0f0",
-};
 const RestaurantCard = ({ resData }) => {
   const {
     name,
@@ -27,4 +24,18 @@ const RestaurantCard = ({ resData }) => {
     </div>
   );
 };
+
+export const withVegLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-2 p-2 rounded-lg">
+          Only Veg
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;

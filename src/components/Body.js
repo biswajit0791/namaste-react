@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withVegLabel } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { SWIGGY_API } from "../utils/constants";
@@ -9,6 +9,8 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
   const [filteredRestaurants, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const RestaurantCardVeg = withVegLabel(RestaurantCard);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -83,7 +85,11 @@ const Body = () => {
       <div className="flex flex-wrap rounded-lg">
         {filteredRestaurants.map(({ info }) => (
           <Link key={info?.id} to={"restaurant/" + info.id}>
-            <RestaurantCard resData={info} />
+            {info?.veg ? (
+              <RestaurantCardVeg resData={info} />
+            ) : (
+              <RestaurantCard resData={info} />
+            )}
           </Link>
         ))}
       </div>
