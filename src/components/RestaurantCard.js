@@ -13,20 +13,17 @@ const RestaurantCard = ({ resData }) => {
     sla: { slaString },
   } = resData;
   return (
-    <div className="res-card" style={styleCard}>
+    <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-50 hover:bg-gray-200">
       <img
-        className="res-logo"
+        className="rounded-lg"
         alt="res-logo"
-        src={
-          RES_IMG_URL +
-          cloudinaryImageId
-        }
+        src={RES_IMG_URL + cloudinaryImageId}
       />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRatingString}</h4>
-      <h4>{slaString}</h4>
+      <h3 className="font-bold py-4 text-xl">{name}</h3>
+      <h4 className="py-2">{cuisines.join(", ")}</h4>
+      <h4>{avgRatingString} Stars</h4>
       <h4>{costForTwo}</h4>
+      <h4>{slaString}</h4>
     </div>
   );
 };
