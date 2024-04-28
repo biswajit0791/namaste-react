@@ -51,7 +51,7 @@ const Body = () => {
         <div className="search m-4 p-4">
           <input
             type="text"
-            className="border border-solid border-black"
+            className="border border-solid border-black px-2"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -82,17 +82,17 @@ const Body = () => {
             }}>
             Reset
           </button>
-          <div className="search m-4 p-4">
-            <label>UserName: </label>
-            <input
-              type="text"
-              className="border border-solid border-black p-2"
-              value={loggedInUser}
-              onChange={(e) => {
-                setUserName(e.target.value);
-              }}
-            />
-          </div>
+        </div>
+        <div className="search m-4 p-4 flex items-center">
+          <label className="mr-2">UserName: </label>
+          <input
+            type="text"
+            className="border border-solid border-black px-2"
+            value={loggedInUser}
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
         </div>
       </div>
       <div className="flex flex-wrap rounded-lg">
